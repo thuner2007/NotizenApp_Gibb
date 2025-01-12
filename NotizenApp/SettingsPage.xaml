@@ -2,16 +2,16 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NotizenApp.SettingsPage"
-             Title="SettingsPage"
+             Title="Settings"
              BackgroundColor="{StaticResource Background}">
 
-    <Grid RowDefinitions="Auto,*" Padding="20">
+    <Grid RowDefinitions="Auto,*" Padding="20" VerticalOptions="Center" HorizontalOptions="Center">
         <Grid ColumnDefinitions="Auto,*" Grid.Row="0">
             <ImageButton Grid.Column="0"
-                        Source="back.png"
-                        HeightRequest="24"
-                        WidthRequest="24"
-                        Clicked="OnBackClicked"/>
+                         Source="back.png"
+                         HeightRequest="24"
+                         WidthRequest="24"
+                         Clicked="OnBackClicked"/>
 
             <Label Grid.Column="1"
                    Text="Settings"
@@ -19,14 +19,33 @@
                    HorizontalOptions="Center"/>
         </Grid>
 
-        <VerticalStackLayout Grid.Row="1" Spacing="20" Margin="0,40,0,0">
+        <VerticalStackLayout Grid.Row="1" Spacing="20" Margin="0,40,0,0" HorizontalOptions="Center">
+            <Label Text="Use Name:"/>
+            <Switch x:Name="UseNameSwitch"
+                    Toggled="OnUseNameToggled"/>
+
             <Label Text="Your Name:"/>
             <Entry x:Name="NameEntry"
-                   Text="{Binding Name}"/>
+                   Text="{Binding UserName}"
+                   IsEnabled="{Binding Source={x:Reference UseNameSwitch}, Path=IsToggled}"/>
 
-            <Label Text="Location:"/>
-            <Label Text="C:/User/you/notes"
-                   TextColor="{StaticResource TextSecondary}"/>
+            <Label Text="Age:"/>
+            <Stepper x:Name="AgeStepper"
+                     Minimum="0"
+                     Maximum="120"
+                     Increment="1"
+                     ValueChanged="OnAgeStepperValueChanged"/>
+            <Label x:Name="AgeLabel"
+                   Text="0"/>
+
+            <Label Text="Next Backup Date:"/>
+            <DatePicker x:Name="NextBackupDatePicker"/>
+
+            <Label Text="Auto Save:"/>
+            <StackLayout>
+                <RadioButton x:Name="AutoSaveOnRadioButton" Content="On" GroupName="AutoSave"/>
+                <RadioButton x:Name="AutoSaveOffRadioButton" Content="Off" GroupName="AutoSave"/>
+            </StackLayout>
         </VerticalStackLayout>
     </Grid>
 </ContentPage>

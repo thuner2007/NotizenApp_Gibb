@@ -13,6 +13,8 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*" />
             <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
 
         <!-- Search Bar -->
@@ -27,7 +29,8 @@
                        BackgroundColor="Transparent"
                        TextColor="White"
                        PlaceholderColor="White"
-                       HeightRequest="40" />
+                       HeightRequest="40"
+                       TextChanged="OnSearchBarTextChanged" />
         </Frame>
 
         <!-- Welcome Label -->
@@ -39,6 +42,24 @@
                HorizontalOptions="Center"
                VerticalOptions="Center"
                Margin="0,0,0,20" />
+
+        <!-- Info Button -->
+        <Button Text="Info"
+                Grid.Row="0"
+                Grid.Column="2"
+                HorizontalOptions="End"
+                VerticalOptions="Center"
+                Clicked="OnInfoClicked" />
+
+        <!-- Settings Button -->
+        <Button Text="Settings"
+                Grid.Row="0"
+                Grid.Column="3"
+                BackgroundColor="{StaticResource Primary}"
+                TextColor="White"
+                HorizontalOptions="End"
+                VerticalOptions="Center"
+                Clicked="OnSettingsClicked" />
 
         <!-- Last Edited History Panel -->
         <StackLayout Grid.Row="1"
@@ -56,6 +77,7 @@
         <!-- Notes Collection -->
         <CollectionView Grid.Row="1"
                         Grid.Column="1"
+                        Grid.ColumnSpan="3"
                         x:Name="NotesCollection"
                         SelectionMode="Single"
                         SelectionChanged="OnNoteSelected">
