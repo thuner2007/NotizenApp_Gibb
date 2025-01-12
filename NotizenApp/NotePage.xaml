@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NotizenApp.NotePage"
+             Title="NotePage"
+             BackgroundColor="{StaticResource Background}">
+    
+    <Grid RowDefinitions="Auto,*" Padding="20">
+        <Grid ColumnDefinitions="Auto,*,Auto" Grid.Row="0">
+            <ImageButton Grid.Column="0"
+                        Source="back.png"
+                        HeightRequest="24"
+                        WidthRequest="24"
+                        Clicked="OnBackClicked"/>
+
+            <HorizontalStackLayout Grid.Column="1"
+                                 HorizontalOptions="Center"
+                                 Spacing="10">
+                <ImageButton Source="bold.png"
+                            HeightRequest="24"
+                            WidthRequest="24"
+                            Clicked="OnBoldClicked"/>
+                <ImageButton Source="italic.png"
+                            HeightRequest="24"
+                            WidthRequest="24"
+                            Clicked="OnItalicClicked"/>
+                <ImageButton Source="underline.png"
+                            HeightRequest="24"
+                            WidthRequest="24"
+                            Clicked="OnUnderlineClicked"/>
+            </HorizontalStackLayout>
+        </Grid>
+
+        <VerticalStackLayout Grid.Row="1" Spacing="20" Margin="0,20,0,0">
+            <Entry x:Name="TitleEntry"
+                   Placeholder="Title"
+                   FontSize="32"/>
+
+            <Editor x:Name="ContentEditor"
+                    Placeholder="Start typing..."
+                    AutoSize="TextChanges"
+                    BackgroundColor="{StaticResource Surface}"
+                    TextColor="{StaticResource TextPrimary}"/>
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>

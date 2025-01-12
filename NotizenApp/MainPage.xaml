@@ -1,69 +1,62 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
-    x:Class="NotizenApp.MainPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    Background="#333333">
+    x:Class="NotizenApp.MainPage"
+    BackgroundColor="{StaticResource Background}">
 
-    <Grid
-        ColumnDefinitions="1*, 2*"
-        HorizontalOptions="FillAndExpand"
-        RowDefinitions="*"
-        VerticalOptions="FillAndExpand">
-        <Grid
-            Grid.Column="0"
-            ColumnDefinitions="*"
-            RowDefinitions="1*, 5*">
-            <Frame
-                Grid.Row="0"
-                Grid.Column="0"
-                Padding="0"
-                BackgroundColor="Green"
-                CornerRadius="24"
-                HeightRequest="100"
-                HorizontalOptions="Center"
-                VerticalOptions="Center"
-                WidthRequest="300">
-                <Frame
-                    Padding="0"
-                    BackgroundColor="White"
-                    CornerRadius="12"
-                    HasShadow="False"
-                    HeightRequest="80"
-                    HorizontalOptions="FillAndExpand"
-                    VerticalOptions="Center"
-                    WidthRequest="280">
-                    <Entry
-                        Margin="10"
-                        FontSize="18"
-                        HorizontalOptions="FillAndExpand"
-                        Placeholder="Enter text here"
-                        TextColor="Black"
-                        VerticalOptions="Center" />
-                </Frame>
-            </Frame>
-            <BoxView Grid.Row="1" BackgroundColor="LightBlue" />
+    <Grid RowDefinitions="Auto,*" Padding="20">
+        <Grid ColumnDefinitions="*,Auto" Grid.Row="0">
+            <VerticalStackLayout Grid.Column="0">
+                <SearchBar x:Name="SearchBar"
+                          Placeholder="Search a note..."
+                          BackgroundColor="{StaticResource Surface}"
+                          TextColor="{StaticResource TextPrimary}"
+                          PlaceholderColor="{StaticResource TextSecondary}"/>
+
+                <Label x:Name="WelcomeLabel"
+                       Text="Hello, {Name}"
+                       FontSize="32"
+                       Margin="0,10,0,20"/>
+            </VerticalStackLayout>
+
+            <ImageButton Grid.Column="1"
+                        Source="settings.png"
+                        HeightRequest="24"
+                        WidthRequest="24"
+                        Clicked="OnSettingsClicked"/>
         </Grid>
 
+        <CollectionView Grid.Row="1" 
+                       x:Name="NotesCollection"
+                       SelectionMode="Single"
+                       SelectionChanged="OnNoteSelected">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical"
+                                Span="2"
+                                VerticalItemSpacing="10"
+                                HorizontalItemSpacing="10"/>
+            </CollectionView.ItemsLayout>
 
-        <!--  Right Div: 2/3 width  -->
-        <Grid
-            Grid.Column="1"
-            BackgroundColor="LightGreen"
-            ColumnDefinitions="*"
-            HorizontalOptions="FillAndExpand"
-            RowDefinitions="1*, 4*"
-            VerticalOptions="FillAndExpand">
-            <Label
-                x:Name="helloLabel"
-                FontAttributes="Bold"
-                FontFamily="Lora"
-                FontSize="96"
-                HorizontalTextAlignment="Center"
-                Text="Hello, {Name}"
-                TextColor="White"
-                VerticalTextAlignment="Center" />
-        </Grid>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame BackgroundColor="{StaticResource Surface}"
+                           CornerRadius="10"
+                           Padding="15">
+                        <StackLayout>
+                            <Label Text="{Binding Title}"
+                                   FontSize="20"
+                                   FontAttributes="Bold"/>
+                            <Label Text="{Binding Content}"
+                                   FontSize="14"
+                                   TextColor="{StaticResource TextSecondary}"
+                                   LineBreakMode="TailTruncation"
+                                   MaxLines="2"/>
+                        </StackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
     </Grid>
 
 </ContentPage>
