@@ -16,14 +16,19 @@
         </Grid.ColumnDefinitions>
 
         <!-- Search Bar -->
-        <SearchBar x:Name="SearchBar"
-                   Grid.Row="0"
-                   Grid.Column="0"
-                   Placeholder="Search a note..."
-                   BackgroundColor="{StaticResource Primary}"
-                   TextColor="White"
-                   PlaceholderColor="White"
-                   HeightRequest="40" />
+        <Frame Grid.Row="0"
+               Grid.Column="0"
+               BackgroundColor="{StaticResource Primary}"
+               CornerRadius="20"
+               Padding="0"
+               HeightRequest="40">
+            <SearchBar x:Name="SearchBar"
+                       Placeholder="Search a note..."
+                       BackgroundColor="Transparent"
+                       TextColor="White"
+                       PlaceholderColor="White"
+                       HeightRequest="40" />
+        </Frame>
 
         <!-- Welcome Label -->
         <Label x:Name="WelcomeLabel"
@@ -43,7 +48,9 @@
                    FontSize="24"
                    FontAttributes="Bold"
                    Margin="0,0,0,10" />
-            <!-- Add your last edited notes here -->
+            <StackLayout x:Name="LastEditedList">
+                <!-- Last edited notes will be added here -->
+            </StackLayout>
         </StackLayout>
 
         <!-- Notes Collection -->
@@ -61,21 +68,23 @@
 
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Frame BackgroundColor="{StaticResource DarkBlue}"
+                    <Frame BackgroundColor="{StaticResource Surface}"
                            CornerRadius="10"
                            Padding="15"
                            HeightRequest="150"
                            WidthRequest="150">
-                        <StackLayout>
+                        <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
                             <Label Text="{Binding Title}"
                                    FontSize="20"
                                    FontAttributes="Bold"
-                                   TextColor="{StaticResource TextPrimary}" />
+                                   TextColor="{StaticResource TextPrimary}"
+                                   HorizontalOptions="Center" />
                             <Label Text="{Binding Content}"
                                    FontSize="14"
                                    TextColor="{StaticResource TextPrimary}"
                                    LineBreakMode="TailTruncation"
-                                   MaxLines="2" />
+                                   MaxLines="2"
+                                   HorizontalOptions="Center" />
                         </StackLayout>
                     </Frame>
                 </DataTemplate>

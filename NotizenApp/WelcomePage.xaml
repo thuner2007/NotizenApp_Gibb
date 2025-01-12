@@ -3,30 +3,39 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:NotizenApp"
              x:Class="NotizenApp.WelcomePage"
-             Title="WelcomePage"
              BackgroundColor="{StaticResource Background}">
-    
+
     <VerticalStackLayout Spacing="20" Padding="20" VerticalOptions="Center">
         <Label Text="Hello, and welcome to"
-               FontSize="32"
+               FontSize="64"
                HorizontalOptions="Center"
                TextColor="{StaticResource TextPrimary}"/>
 
         <Label Text="Notify"
                FontSize="48"
-               TextColor="{StaticResource Primary}"
-               HorizontalOptions="Center"/>
+               TextColor="{StaticResource Blue}"
+               HorizontalOptions="Center"
+               TextDecorations="Underline"/>
 
-        <Label Text="What is your name?"
-               FontSize="24"
-               Margin="0,40,0,0"
-               HorizontalOptions="Center"/>
-
-        <Entry x:Name="NameEntry"
-               Placeholder="Type your name here"
-               BackgroundColor="{StaticResource Surface}"
-               TextColor="{StaticResource TextPrimary}"
-               HorizontalOptions="Fill"/>
+        <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
+            <Label Text="What is your name?"
+                   FontSize="48"
+                   HorizontalOptions="Center"
+                   TextColor="Gray"/>
+            <Frame BackgroundColor="{StaticResource Primary}"
+                   CornerRadius="20"
+                   Padding="10"
+                   HasShadow="False"
+                   BorderColor="Transparent"
+                   VerticalOptions="Center">
+                <Entry x:Name="NameEntry"
+                       Placeholder="Type your name here"
+                       BackgroundColor="Transparent"
+                       TextColor="{StaticResource TextPrimary}"
+                       PlaceholderColor="White"
+                       HorizontalOptions="Fill"/>
+            </Frame>
+        </HorizontalStackLayout>
 
         <Button Text="Finish ->"
                 Clicked="OnFinishClicked"

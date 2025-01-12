@@ -1,4 +1,6 @@
-﻿namespace NotizenApp
+﻿using Microsoft.UI.Composition;
+
+namespace NotizenApp
 {
     public partial class MainPage : ContentPage
     {
@@ -29,7 +31,38 @@
             {
                 await Navigation.PushAsync(new NotePage(note));
                 NotesCollection.SelectedItem = null;
+
+                // Update the Last Edited section
+                UpdateLastEdited(note);
             }
+        }
+
+
+        private void UpdateLastEdited(Note note)
+        {
+            LastEditedList.Children.Insert(0, new Frame
+            {
+                Content = new Label
+                {
+                    Text = note.Title,
+                    FontSize = 18,
+                    TextColor = (Color)Application.Current.Resources["TextPrimary"]
+                },
+                BackgroundColor = (Color)Application.Current.Resources["Background"],
+                CornerRadius = 10,
+                HasShadow = true,
+                Margin = new Thickness(0, 0, 0, 10),
+                Padding = new Thickness(10),
+                HeightRequest = 50,
+                WidthRequest = 200,
+                Shadow = new Shadow
+                {
+                    Brush = Brush.Gray,
+                    Opacity = 0.3F,
+                    Offset = new Point(5, 5),
+                    Radius = 10
+                }
+            });
         }
     }
 
