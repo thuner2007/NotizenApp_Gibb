@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NotizenApp.FAQPage"
+             Title="FAQ"
+             BackgroundColor="{StaticResource Background}">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="10">
+            <Label Text="Frequently Asked Questions" FontSize="24" HorizontalOptions="Center" />
+
+            <!-- Question 1 -->
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Label x:Name="Question1" Text="Question 1: How do I use this app?" FontSize="18" />
+                <Label x:Name="Answer1" Text="Answer: To use this app, you can start by creating a new note from the main page. You can also navigate to the settings page to customize your preferences." Grid.Row="1" IsVisible="False" LineBreakMode="WordWrap" />
+                <BoxView x:Name="BoxView1" HeightRequest="1" BackgroundColor="Gray" Grid.Row="1" IsVisible="False" />
+            </Grid>
+
+            <!-- Question 2 -->
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Label x:Name="Question2" Text="Question 2: How do I save my notes?" FontSize="18" />
+                <Label x:Name="Answer2" Text="Answer: Your notes are automatically saved as you type. You can also manually save them by clicking the save button on the note page." Grid.Row="1" IsVisible="False" LineBreakMode="WordWrap" />
+                <BoxView x:Name="BoxView2" HeightRequest="1" BackgroundColor="Gray" Grid.Row="1" IsVisible="False" />
+            </Grid>
+
+            <!-- Question 3 -->
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Label x:Name="Question3" Text="Question 3: How do I delete a note?" FontSize="18" />
+                <Label x:Name="Answer3" Text="Answer: To delete a note, swipe left on the note in the main page and click the delete button." Grid.Row="1" IsVisible="False" LineBreakMode="WordWrap" />
+                <BoxView x:Name="BoxView3" HeightRequest="1" BackgroundColor="Gray" Grid.Row="1" IsVisible="False" />
+            </Grid>
+
+            <!-- Add more questions and answers as needed -->
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

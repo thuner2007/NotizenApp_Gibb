@@ -84,6 +84,11 @@ namespace NotizenApp
         {
             await Navigation.PushAsync(new InfoPage());
         }
+
+        private async void OnFAQClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new FAQPage());
+        }
     }
 
     public class Note
