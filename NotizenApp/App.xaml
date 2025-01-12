@@ -6,11 +6,14 @@
     <Application.Resources>
         <ResourceDictionary>
             <!-- Colors -->
-            <Color x:Key="Primary">#17a589</Color>
+            <Color x:Key="Primary">#17A589</Color>
             <Color x:Key="Background">#333333</Color>
             <Color x:Key="Surface">#1e1e1e</Color>
             <Color x:Key="TextPrimary">#FFFFFF</Color>
             <Color x:Key="TextSecondary">#B0B0B0</Color>
+            <Color x:Key="Blue">#007ACC</Color>
+            <Color x:Key="DarkBlue">#173350</Color>
+
 
             <!-- Styles -->
             <Style TargetType="Page">
